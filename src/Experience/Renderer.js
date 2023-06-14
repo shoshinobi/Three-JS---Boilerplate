@@ -32,6 +32,8 @@ export default class Renderer {
         
         // Gamma Correction
         this.instance.outputColorSpace = THREE.SRGBColorSpace;
+        this.instance.outputEncoding = THREE.sRGBEncoding;
+
         
         // Tone Mapping (ACEC Filmic, sRGB, Uncharted, Cineon, None, Custom, etc.)
         this.instance.toneMapping = THREE.ACESFilmicToneMapping;

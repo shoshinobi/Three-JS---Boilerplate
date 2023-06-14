@@ -24,8 +24,11 @@ export default class Fox {
 
   setModel() {
     this.model = this.resource.scene;
-    this.model.scale.set(0.02, 0.02, 0.02);
-    // this.model.rotation.y = Math.PI * 0.5
+    this.model.receiveShadow = true;
+    this.model.scale.set(0.0085, 0.0085, 0.0085);
+    this.model.rotation.y = Math.PI * 0.62;
+    this.model.position.set(-1.25, 0, 0.8);
+
     this.scene.add(this.model);
 
     this.model.traverse((child) => {

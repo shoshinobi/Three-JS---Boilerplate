@@ -2,6 +2,7 @@ import Experience from "../Experience.js";
 import Environment from "./Environment.js";
 import Floor from "./Floor.js";
 import Fox from "./Fox.js";
+import Portal from "./Portal.js";
 
 export default class World {
   constructor() {
@@ -25,8 +26,9 @@ export default class World {
       console.log("~Resources are ready");
 
       // Setup the world scene
-      this.floor = new Floor();
+      //this.floor = new Floor();
       this.fox = new Fox();
+      this.portal = new Portal();
 
       this.environment = new Environment();
     });
