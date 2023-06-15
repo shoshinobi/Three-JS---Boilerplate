@@ -3,6 +3,7 @@ import Environment from "./Environment.js";
 import Floor from "./Floor.js";
 import Fox from "./Fox.js";
 import Portal from "./Portal.js";
+import Tub from "./Tub.js";
 
 export default class World {
   constructor() {
@@ -10,16 +11,7 @@ export default class World {
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
 
-    // Test mesh
-    // const testMesh = new THREE.Mesh(
-    //     new THREE.BoxGeometry(1, 1, 1),
-    //     new THREE.MeshStandardMaterial(
-    //     {
-    //         color: 0xcccccc,
-    //         wireframe: false,
-    //     })
-    // )
-    // this.scene.add(testMesh)
+   
 
     // Wait for resources
     this.resources.on("ready", () => {
@@ -29,6 +21,7 @@ export default class World {
       //this.floor = new Floor();
       this.fox = new Fox();
       this.portal = new Portal();
+      this.tub = new Tub();
 
       this.environment = new Environment();
     });

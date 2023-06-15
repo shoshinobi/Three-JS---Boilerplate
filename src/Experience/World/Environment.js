@@ -20,7 +20,7 @@ export default class Environment {
   /*------------------ Methods -----------------*/
 
   setSunLight() {
-    this.sunLight = new THREE.DirectionalLight("#ecb78b", 1.5);
+    this.sunLight = new THREE.DirectionalLight("#ecb78b", 0.8);
     this.sunLight.castShadow = true;
     this.sunLight.shadow.camera.far = 15;
     this.sunLight.shadow.mapSize.set(1024, 1024);
@@ -30,12 +30,7 @@ export default class Environment {
 
     // Debug Parameters
 
-    // add sunlight helper object
-    this.sunLightHelper = new THREE.DirectionalLightHelper(this.sunLight, 0.5);
-    this.scene.add(this.sunLightHelper);
-
-
-
+    
     if (this.debug.active) {
       this.debugFolder
         .add(this.sunLight, "intensity")
@@ -62,7 +57,7 @@ export default class Environment {
 
   setEnvironmentMap() {
     this.environmentMap = {};
-    this.environmentMap.intensity = 0.2;
+    this.environmentMap.intensity = 1;
     this.environmentMap.texture = this.resources.items.environmentMapTex;
 
     // BRUNO LESSON UPDATE TO COME
