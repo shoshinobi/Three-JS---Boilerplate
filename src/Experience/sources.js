@@ -41,9 +41,5 @@ export default [
     type: "texture",
     path: "./models/Portal/portal.jpg",
   },
-  {
-    name: "tubModel",
-    type: "gltfModel",
-    path: "./models/Tub/tub.glb",
-  }
+  
 ];

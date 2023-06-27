@@ -3,7 +3,7 @@ import Environment from "./Environment.js";
 import Floor from "./Floor.js";
 import Fox from "./Fox.js";
 import Portal from "./Portal.js";
-import Tub from "./Tub.js";
+// import Tub from "./Tub.js";
 
 export default class World {
   constructor() {
@@ -21,7 +21,7 @@ export default class World {
       //this.floor = new Floor();
       this.fox = new Fox();
       this.portal = new Portal();
-      this.tub = new Tub();
+      // this.tub = new Tub();
 
       this.environment = new Environment();
     });
