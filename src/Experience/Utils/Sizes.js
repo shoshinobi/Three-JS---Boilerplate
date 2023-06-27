@@ -1,3 +1,4 @@
+import Fireflies from "../World/objects/Fireflies.js";
 import EventEmitter from "./EventEmitter.js";
 
 export default class Sizes extends EventEmitter {

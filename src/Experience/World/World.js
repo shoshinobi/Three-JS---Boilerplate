@@ -1,9 +1,10 @@
 import Experience from "../Experience.js";
 import Environment from "./Environment.js";
-import Floor from "./Floor.js";
-import Fox from "./Fox.js";
-import Portal from "./Portal.js";
-// import Tub from "./Tub.js";
+import Floor from "./objects/Floor.js";
+import Fox from "./objects/Fox.js";
+import Portal from "./objects/Portal.js";
+import Fireflies from "./objects/Fireflies.js";
+
 
 export default class World {
   constructor() {
@@ -21,7 +22,9 @@ export default class World {
       //this.floor = new Floor();
       this.fox = new Fox();
       this.portal = new Portal();
-      // this.tub = new Tub();
+      this.fireFlies = new Fireflies()
+
+
 
       this.environment = new Environment();
     });

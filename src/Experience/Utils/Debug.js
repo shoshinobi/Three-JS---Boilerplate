@@ -6,6 +6,7 @@ export default class Debug {
 
     if (this.active) {
       this.gui = new dat.GUI();
+     
     }
   }
 }
