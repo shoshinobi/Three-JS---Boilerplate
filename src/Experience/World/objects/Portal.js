@@ -85,8 +85,8 @@ export default class Portal {
     lampGlassMeshB.material = this.poleLightMaterial;
 
     // Portal emission material
-    this.debugFolder.portalColorStart = "#fef5ff";
-    this.debugFolder.portalColorEnd = "#d0b0c0";
+    this.portalColorStart = "#fef5ff";
+    this.portalColorEnd = "#d0b0c0";
 
     this.portalLightMaterial = new THREE.ShaderMaterial({
       vertexShader: portalVertexShader,
@@ -94,10 +94,10 @@ export default class Portal {
       uniforms: {
         uTime: { value: 0 },
         uColorStart: {
-          value: new THREE.Color(this.debugFolder.portalColorStart),
+          value: new THREE.Color(this.portalColorStart),
         },
         uColorEnd: { 
-          value: new THREE.Color(this.debugFolder.portalColorEnd) },
+          value: new THREE.Color(this.portalColorEnd) },
       },
     });
 
