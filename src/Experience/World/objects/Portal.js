@@ -1,12 +1,14 @@
 import * as THREE from "three";
 import Experience from "../../Experience.js";
+import portalVertexShader from "../shaders/portal/vertex.glsl";
+import portalFragmentShader from "../shaders/portal/fragment.glsl";
 
 export default class Portal {
   constructor() {
     this.experience = new Experience();
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
-    // this.time = this.experience.time;
+    this.time = this.experience.time;
     this.debug = this.experience.debug;
 
     // Debug
@@ -83,7 +85,56 @@ export default class Portal {
     lampGlassMeshB.material = this.poleLightMaterial;
 
     // Portal emission material
-    this.portalLightMaterial = new THREE.MeshBasicMaterial({ color: 0xddcfe8 });
+    this.debugFolder.portalColorStart = "#fef5ff";
+    this.debugFolder.portalColorEnd = "#d0b0c0";
+
+    this.portalLightMaterial = new THREE.ShaderMaterial({
+      vertexShader: portalVertexShader,
+      fragmentShader: portalFragmentShader,
+      uniforms: {
+        uTime: { value: 0 },
+        uColorStart: {
+          value: new THREE.Color(this.debugFolder.portalColorStart),
+        },
+        uColorEnd: { 
+          value: new THREE.Color(this.debugFolder.portalColorEnd) },
+      },
+    });
+
     portalMesh.material = this.portalLightMaterial;
+
+    // Debug
+    if (this.debug.active) {
+      // Lamp post light color
+      this.debugFolder
+        .addColor(this.poleLightMaterial, "color")
+        .onChange(() => {
+          this.poleLightMaterial.color.set(this.poleLightMaterial.color);
+        })
+        .name("PoleLightColor");
+
+      // Portal light color
+      this.debugFolder
+        .addColor(this.portalLightMaterial.uniforms.uColorStart, "value")
+        .onChange(() => {
+          this.portalLightMaterial.uniforms.uColorStart.value.set(
+            this.portalLightMaterial.uniforms.uColorStart.value
+          );
+        })
+        .name("PortalColorStart");
+      this.debugFolder
+        .addColor(this.portalLightMaterial.uniforms.uColorEnd, "value")
+        .onChange(() => {
+          this.portalLightMaterial.uniforms.uColorEnd.value.set(
+            this.portalLightMaterial.uniforms.uColorEnd.value
+          );
+        })
+        .name("PortalColorEnd");
+    }
+  }
+
+  //Update
+  update() {
+    this.portalLightMaterial.uniforms.uTime.value = this.time.elapsed * 0.001;
   }
 }

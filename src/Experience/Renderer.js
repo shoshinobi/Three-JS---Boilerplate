@@ -48,7 +48,7 @@ export default class Renderer {
     this.instance.setPixelRatio(this.sizes.pixelRatio);
 
     // Background Color
-    this.instance.setClearColor(0x362010, 1);
+    this.instance.setClearColor(0x181513, 1);
 
     // Debug Parameters
     if (this.debug.active) {

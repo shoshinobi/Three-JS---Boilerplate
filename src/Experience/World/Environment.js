@@ -57,7 +57,7 @@ export default class Environment {
 
   setEnvironmentMap() {
     this.environmentMap = {};
-    this.environmentMap.intensity = 1;
+    this.environmentMap.intensity = 0.5;
     this.environmentMap.texture = this.resources.items.environmentMapTex;
 
     // BRUNO LESSON UPDATE TO COME

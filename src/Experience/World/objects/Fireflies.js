@@ -7,7 +7,7 @@ export default class Fireflies {
   constructor() {
     this.experience = new Experience();
     this.scene = this.experience.scene;
-    // this.resources = this.experience.resources;
+    this.time = this.experience.time;
     this.debug = this.experience.debug;
 
     // Debug
@@ -19,6 +19,11 @@ export default class Fireflies {
     this.setGeometry();
     this.setMaterial();
     this.setMesh();
+
+    this.firefliesMaterial.uniforms.uPixelRatio.value = Math.min(
+      window.devicePixelRatio,
+      2
+    );
   }
 
   /*------------------ Methods -----------------*/
@@ -44,7 +49,7 @@ export default class Fireflies {
     this.firefliesGeometry.setAttribute(
       "aScale",
       new THREE.BufferAttribute(scaleArray, 1)
-    )
+    );
   }
 
   setMaterial() {
@@ -52,6 +57,7 @@ export default class Fireflies {
       vertexShader: firefliesVertexShader,
       fragmentShader: firefliesFragmentShader,
       uniforms: {
+        uTime: { value: 0 },
         uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
         uSize: { value: 100 },
       },
@@ -77,5 +83,10 @@ export default class Fireflies {
       this.firefliesMaterial
     );
     this.scene.add(this.fireflies);
+  }
+
+  //Update
+  update() {
+    this.firefliesMaterial.uniforms.uTime.value = this.time.elapsed * 0.0025;
   }
 }
