@@ -5,6 +5,7 @@ import Fox from "./objects/Fox.js";
 import Portal from "./objects/Portal.js";
 import Fireflies from "./objects/Fireflies.js";
 
+
 export default class World {
   constructor() {
     this.experience = new Experience();
@@ -28,12 +29,15 @@ export default class World {
   update() {
     // Update Fox
     if (this.fox) this.fox.update();
+    
 
     // Update Materials
     if (this.fireFlies) this.fireFlies.update();
 
     // Update Portal
     if (this.portal) this.portal.update();
+
+   
 
   }
 }

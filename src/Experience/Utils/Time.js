@@ -25,6 +25,8 @@ export default class Time extends EventEmitter {
     this.current = currentTime;
     this.elapsed = this.current - this.start;
 
+    
+
     // Emit the event
     this.trigger("tick");
 

@@ -8,12 +8,12 @@
     "build": "vite build"
   },
   "devDependencies": {
-    "vite": "^4.0.4"
+    "vite": "^4.3.9"
   },
   "dependencies": {
-    "lil-gui": "^0.17.0",
-    "openai": "^3.2.1",
-    "three": "^0.148.0",
+    "lil-gui": "^0.18.2",
+    "openai": "^3.3.0",
+    "three": "^0.154.0",
     "vite-plugin-glsl": "^1.1.2"
   }
 }
