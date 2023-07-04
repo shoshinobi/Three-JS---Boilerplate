@@ -25,6 +25,7 @@ export default class Renderer {
     this.sizes = this.experience.sizes;
     this.camera = this.experience.camera;
     this.debug = this.experience.debug;
+    this.time = this.experience.time;
 
     // Debug
     this.debug = this.experience.debug;
@@ -191,15 +192,13 @@ export default class Renderer {
       `,
     };
 
-    const displacementPass = new ShaderPass(DisplacementShader);
-    displacementPass.uniforms["uTime"].value = 0;
-    
-    displacementPass.enabled = true;
-    this.effectComposer.addPass(displacementPass);
+    this.displacementPass = new ShaderPass(DisplacementShader);
+    this.displacementPass.uniforms.uTime.value = 0;
+    this.displacementPass.enabled = true;
+    this.effectComposer.addPass(this.displacementPass);
 
     /*------- Anti Aliasing -------*/
-    
-    
+
     console.log(
       "WeGL2 Capable Browser : " + this.instance.capabilities.isWebGL2
     );
@@ -266,13 +265,11 @@ export default class Renderer {
 
   update() {
     if (this.usePostprocess) {
-      
-      // Update DisplacementShader uTime value using elapsed time
-      
-    
 
+      const elapsedTime = this.clock.getElapsedTime();
 
-
+      // Update displacement pass
+      this.displacementPass.uniforms.uTime.value += 0.01;
 
       this.effectComposer.render();
     } else {
