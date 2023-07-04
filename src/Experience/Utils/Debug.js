@@ -1,4 +1,6 @@
 import * as dat from "lil-gui";
+import Stats from 'stats.js';
+
 
 export default class Debug {
   constructor() {
@@ -6,6 +8,12 @@ export default class Debug {
 
     if (this.active) {
       this.gui = new dat.GUI();
+
+      // Stats Monitor
+      const stats = new Stats();
+      stats.showPanel(0)
+      document.body.appendChild(stats.dom)
+
      
     }
   }

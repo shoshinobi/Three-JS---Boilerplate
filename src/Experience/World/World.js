@@ -36,6 +36,7 @@ export default class World {
 
     // Update Portal
     if (this.portal) this.portal.update();
+    
 
    
 

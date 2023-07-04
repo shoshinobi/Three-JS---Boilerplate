@@ -9,6 +9,7 @@ import Resources from "./Utils/Resources.js";
 import sources from "./sources.js";
 import Debug from "./Utils/Debug.js";
 
+
 // Singleton
 let instance = null;
 
@@ -64,6 +65,7 @@ export default class Experience {
     this.camera.update();
     this.world.update();
     this.renderer.update();
+
   }
 
   destroy() {

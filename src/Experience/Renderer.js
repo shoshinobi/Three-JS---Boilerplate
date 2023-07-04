@@ -16,9 +16,9 @@ import { GammaCorrectionShader } from "three/examples/jsm/shaders/GammaCorrectio
 import { SMAAPass } from "three/examples/jsm/postprocessing/SMAAPass.js";
 
 export default class Renderer {
-  usePostprocess = true;
-
+  
   constructor() {
+    this.usePostprocess = true;
     this.experience = new Experience();
     this.canvas = this.experience.canvas;
     this.scene = this.experience.scene;
@@ -43,6 +43,7 @@ export default class Renderer {
   setInstance() {
     this.instance = new THREE.WebGLRenderer({
       canvas: this.canvas,
+      premultipliedAlpha: true,
       alpha: true,
       antialias: true,
     });
@@ -90,6 +91,7 @@ export default class Renderer {
       this.sizes.height,
       {
         samples: this.instance.getPixelRatio() === 1 ? 2 : 0,
+        alpha: true,
       }
     );
 
@@ -103,8 +105,8 @@ export default class Renderer {
     // RGB Shift Pass
     const rgbShiftPass = new ShaderPass(RGBShiftShader);
     rgbShiftPass.enabled = true;
-    rgbShiftPass.uniforms["amount"].value = 0.0015;
-    rgbShiftPass.uniforms["angle"].value = 0.0;
+    rgbShiftPass.uniforms.amount.value = 0.0015;
+    rgbShiftPass.uniforms.angle.value = 0.0;
     this.effectComposer.addPass(rgbShiftPass);
 
     // Unreal Bloom Pass
@@ -221,7 +223,7 @@ export default class Renderer {
       this.debugFolder.add(unrealBloomPass, "enabled").name("Bloom Pass");
       this.debugFolder
         .add(unrealBloomPass, "strength")
-        .name("Bloom trength")
+        .name("Bloom strength")
         .min(0)
         .max(2)
         .step(0.001);
