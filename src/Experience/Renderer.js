@@ -265,9 +265,6 @@ export default class Renderer {
 
   update() {
     if (this.usePostprocess) {
-
-      const elapsedTime = this.clock.getElapsedTime();
-
       // Update displacement pass
       this.displacementPass.uniforms.uTime.value += 0.01;
 
